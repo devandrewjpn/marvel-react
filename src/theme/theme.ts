@@ -1,0 +1,41 @@
+import { MantineThemeOverride } from '@mantine/core'
+
+import { customColors } from './colors'
+import { customComponents } from './components'
+import { globalStyles } from './global'
+
+export const customTheme: MantineThemeOverride = {
+    colorScheme: 'dark',
+    fontFamily: 'Epilogue, sans-serif',
+    components: customComponents,
+    globalStyles: globalStyles,
+    headings: {
+        fontFamily: 'Epilogue',
+    },
+    fontSizes: {
+        xs: '12px',
+        sm: '14px',
+        md: '16px',
+        lg: '18px',
+        xl: '24px',
+    },
+    spacing: {
+        xs: '8px',
+        sm: '12px',
+        md: '16px',
+        lg: '20px',
+        xl: '24px',
+    },
+    radius: {
+        xs: '4px',
+        sm: '6px',
+        md: '8px',
+        lg: '12px',
+        xl: '32px',
+    },
+    loader: 'oval',
+    defaultRadius: 6,
+    primaryShade: 6,
+    colors: customColors,
+    primaryColor: 'blue',
+}
