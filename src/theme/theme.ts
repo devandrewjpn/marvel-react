@@ -5,7 +5,7 @@ import { customComponents } from './components'
 import { globalStyles } from './global'
 
 export const customTheme: MantineThemeOverride = {
-    colorScheme: 'dark',
+    colorScheme: 'light',
     fontFamily: 'Epilogue, sans-serif',
     components: customComponents,
     globalStyles: globalStyles,
@@ -18,20 +18,22 @@ export const customTheme: MantineThemeOverride = {
         md: '16px',
         lg: '18px',
         xl: '24px',
+        xxl: '36px',
     },
     spacing: {
         xs: '8px',
         sm: '12px',
         md: '16px',
         lg: '20px',
-        xl: '24px',
+        xl: '36px',
+        xxl: '49px',
     },
     radius: {
         xs: '4px',
         sm: '6px',
-        md: '8px',
+        md: '10px',
         lg: '12px',
-        xl: '32px',
+        xl: '28px',
     },
     loader: 'oval',
     defaultRadius: 6,

@@ -14,7 +14,7 @@ export type CustomThemeProviderProps = {
 const marvelCssCache = createEmotionCache({ key: 'marvel' })
 
 function CustomThemeProvider({ children }: CustomThemeProviderProps) {
-    const preferredSystemColor = useColorScheme('dark')
+    const preferredSystemColor = useColorScheme('light')
 
     const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
         key: 'marvel-color-scheme',

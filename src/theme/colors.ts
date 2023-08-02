@@ -13,4 +13,16 @@ export const customColors: Partial<MantineThemeColors> = {
         '#0c0d21',
         '#01010a',
     ],
+    brand: [
+        '#F0BBDD',
+        '#ED9BCF',
+        '#747d94',
+        '#ED5DB8',
+        '#F13EAF',
+        '#F71FA7',
+        '#213770',
+        '#E00890',
+        '#00113d',
+        '#AD1374',
+    ],
 }

@@ -14,4 +14,9 @@ export const globalStyles = (theme: MantineTheme): CSSObject => ({
     '::selection': {
         background: theme.fn.primaryColor(),
     },
+    h1: {
+        margin: 0,
+        letterSpacing: '-2.34px',
+        fontWeight: 700,
+    },
 })
