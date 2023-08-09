@@ -4,11 +4,9 @@ import Routes from '@/routes/Routes'
 
 function App() {
     return (
-        <>
-            <BrowserRouter>
-                <Routes />
-            </BrowserRouter>
-        </>
+        <BrowserRouter>
+            <Routes />
+        </BrowserRouter>
     )
 }
 

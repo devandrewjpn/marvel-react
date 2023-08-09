@@ -17,9 +17,15 @@ export const customComponents: MantineThemeComponents = {
             },
         }),
     },
-    PasswordInput: {
-        styles: () => ({
-            input: {},
-        }),
-    },
+    // PasswordInput: {
+    //     styles: (theme) => ({
+    //         input: {
+    //             padding: '20px 0 20px 15px', //colocar no padrao dos spacing
+    //             borderRadius: theme.radius.md,
+    //             background: theme.white,
+    //             fontSize: theme.fontSizes.md,
+    //             height: 'auto',
+    //         },
+    //     }),
+    // },
 }

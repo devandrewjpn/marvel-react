@@ -1,53 +1,72 @@
-import React from 'react'
 import EnterIcon from '@/assets/images/enter.svg'
 import MailIcon from '@/assets/images/mailicon.svg'
-import { Text, Button, PasswordInput, TextInput } from '@mantine/core'
+import ShieldIcon from '@/assets/images/shield.svg'
+import { Text, Button, PasswordInput, TextInput, Flex } from '@mantine/core'
+import { useStyles } from '../AuthShell/AuthShell.styles'
+import { NavLink } from 'react-router-dom'
+import { authPaths } from '@/routes/paths'
+import { useForm } from '@mantine/form'
+import { LoginPageFormProps } from './LoginPage.types'
+import { useLocalStorage } from '@mantine/hooks'
+import { getJwtToken } from '@/services'
 
 const LoginPage = () => {
+    const [, setToken] = useLocalStorage({ key: 'MARVEL_ACCESS_TOKEN' })
+    const { classes } = useStyles()
+    const form = useForm<LoginPageFormProps>({
+        initialValues: {
+            email: '',
+            password: '',
+        },
+
+        validate: {
+            email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+            password: (value) => (value.length === 0 ? 'Password is required' : null),
+        },
+    })
+
+    const handleSubmit = (formValues: LoginPageFormProps) => {
+        console.log(formValues)
+        const token = getJwtToken({ email: formValues.email })
+        setToken(token)
+    }
+
     return (
-        <>
+        <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
             <Text color="brand.8" size="xxl" component="h1">
                 Bem-vindo
             </Text>
-            <Text>informe as suas credenciais de acesso ao portal</Text>
-            <TextInput rightSection={<img src={MailIcon} alt="Mail Icon" />} placeholder="Informe seu e-mail" />
-            <PasswordInput placeholder="Informe sua senha" />
-            <Button rightIcon={<img src={EnterIcon} alt="Enter Icon" />}>entrar</Button>
-        </>
+            <Text className={classes.primaryDescription}>informe as suas credenciais de acesso ao portal</Text>
+            <TextInput
+                rightSection={<img src={MailIcon} alt="Mail Icon" />}
+                mb={23}
+                mt={6}
+                placeholder="Informe seu e-mail"
+                {...form.getInputProps('email')}
+            />
+            <PasswordInput placeholder="Informe sua senha" mb={11} {...form.getInputProps('password')} />
+
+            <Button
+                type="submit"
+                rightIcon={<img src={EnterIcon} width={13} alt="Enter Icon" />}
+                className={classes.primaryButton}>
+                entrar
+            </Button>
+
+            <Flex justify="flex-end">
+                <NavLink to={authPaths.forgotPassword}>
+                    <Button
+                        leftIcon={<img src={ShieldIcon} width={13} alt="Shield Icon" />}
+                        mt={20}
+                        color="red"
+                        variant="subtle"
+                        compact>
+                        Esqueceu sua senha?
+                    </Button>
+                </NavLink>
+            </Flex>
+        </form>
     )
-
-    // const [data, setData] = useState(null)
-    // const [loading, setLoading] = useState(true)
-    // const [error, setError] = useState(null)
-
-    // useEffect(() => {
-    //     const apiKey = '08bfc07e5af8c63dcc5c879a66931f85'
-    //     const apiUrl = `https://gateway.marvel.com:443/v1/public/characters?apikey=${apiKey}`
-
-    //     axios
-    //         .get(apiUrl, {
-    //             headers: {
-    //                 'api-key': apiKey,
-    //             },
-    //         })
-    //         .then((response) => {
-    //             setData(response.data)
-    //             setLoading(false)
-    //         })
-    //         .catch((error) => {
-    //             console.log(error)
-    //             setLoading(false)
-    //             setError(error)
-    //         })
-    // }, [])
-
-    // if (loading) {
-    //     return <div>Carregando...</div>
-    // }
-
-    // if (error) {
-    //     return <div>{error}</div>
-    // }
 }
 
 export default LoginPage

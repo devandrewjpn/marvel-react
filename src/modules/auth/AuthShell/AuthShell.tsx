@@ -14,7 +14,7 @@ const AuthShell = () => {
                     <Grid.Col span={12}>
                         <Image src={Logo} width={169} className={classes.logo} alt="Logo" />
                     </Grid.Col>
-                    <Grid.Col md={4} xs={12} offsetMd={8} offsetXs={0}>
+                    <Grid.Col md={5} xs={12} offsetMd={7} offsetXs={0}>
                         <Card className={classes.card} py="xxl" px="xl">
                             <Outlet />
                         </Card>
