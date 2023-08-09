@@ -3,10 +3,13 @@ import { useStyles } from './Home.style'
 import { NavLink } from 'react-router-dom'
 import { dashPaths } from '@/routes/paths/dashboard.paths'
 import { mockData } from '../../../services/characters'
+import { useMarvelCharacters } from '@/services/marvel.query'
 
 const Home = () => {
     const { classes } = useStyles()
-    // console.log(characters.data);
+    const { characters } = useMarvelCharacters()
+
+    console.log(characters)
 
     return (
         <>
